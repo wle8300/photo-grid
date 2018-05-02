@@ -145,24 +145,24 @@ class Card extends Component {
 
             return (
               <div style={{
+                position: this.props.isSelected ? 'fixed' : 'relative',
+                zIndex: this.props.isSelected ? 1 : 0,
+                top: 0,
+                left: 0,
                 display: 'inline-block',
                 margin: `${margin}rem 0`,
                 width: this.state.inactiveWidth || '100%',
                 height: this.state.inactiveHeight || '100%',
-                transition: 'all 250ms linear',
+                transition: 'all 500ms ease-out',
               }}>
                 <div style={{
-                  position: this.props.isSelected ? 'fixed' : 'relative',
-                  zIndex: this.props.isSelected ? 1 : 0,
-                  top: 0,
-                  left: 0,
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   width: this.props.isSelected ? '100vw' : 'initial',
                   height: this.props.isSelected ? '100vh' : 'initial',
                   backgroundColor: this.props.isSelected ? colorOpaque : 'transparent',
-                  transition: 'background-color 250ms linear',
+                  transition: 'all 500ms ease-out',
                 }}>
                   <img
                     ref={this.initRef}
@@ -171,10 +171,8 @@ class Card extends Component {
                     onMouseUp={this.props.onMouseUp}
                     alt={this.props.src}
                     style={{
-                      width: this.props.isSelected ? 'auto' : '100%',
-                      maxWidth: '95vw',
-                      height: this.props.isSelected ? 'auto' : '100%',
-                      maxHeight: '90vw',
+                      maxWidth: this.props.isSelected ? '95vw' : '100%',
+                      maxHeight: this.props.isSelected ? '90vw' : '100%',
                       objectFit: 'cover',
                       borderRadius: this.props.isSelected ? '0.5rem' : 0,
                       boxShadow: `0 0 ${auraSize}rem ${accentColor}`,
